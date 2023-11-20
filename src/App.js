@@ -64,10 +64,10 @@ const App = () => {
         {/* <Socket /> */}
       </div>
       {/* <ThreeD /> */}
-      {/* <div style={{ display: "flex", justifyContent: "space-around" }}>
+      <div style={{ display: "flex", justifyContent: "space-around" }}>
         <LudoBoard playerCount={count} SVG_SIZE={SVG_SIZE} />
         <Main />
-      </div> */}
+      </div>
     </div>
   );
 };

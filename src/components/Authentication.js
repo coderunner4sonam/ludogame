@@ -7,7 +7,7 @@ import AuthHeader from "./AuthHeader";
 const Authentication = ({ setRegisterPopUp }) => {
   return (
     <BrowserRouter>
-      <div style={content}>
+      <div style={content} tabIndex={0} autoFocus onBlur={()=>setRegisterPopUp(false)}> 
         <div style={crossStyle}>
           <button
             style={crossButtonStyle}
@@ -42,6 +42,7 @@ const content = {
   backgroundColor: "white",
   zIndex: 999,
   maxWidth: "600px",
+  
 };
 
 const contentStyle = {
