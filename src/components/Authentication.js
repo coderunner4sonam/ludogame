@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./Login";
 import SignUP from "./SignUP";
 import AuthHeader from "./AuthHeader";
 
-
-
 const Authentication = ({ setRegisterPopUp }) => {
   return (
     <BrowserRouter>
-      <div style={content}>
+      <div style={content} tabIndex={0} autoFocus onBlur={()=>setRegisterPopUp(false)}> 
         <div style={crossStyle}>
           <button
             style={crossButtonStyle}
@@ -43,6 +41,7 @@ const content = {
   backgroundColor: "white",
   zIndex: 999,
   maxWidth: "600px",
+  
 };
 
 const contentStyle = {

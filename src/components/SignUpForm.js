@@ -1,51 +1,58 @@
 import React, { useState } from "react";
+import SignUpInputField from "./SignUpInputField";
 
 const SignUpForm = () => {
   const [hiddenPassword, setHiddenPassword] = useState(true);
-  const [confirmHiddenPassword, setConfirmHiddenPassword] = useState(true);
+  const [hiddenConfirmPassword, setHiddenConfirmPassword] = useState(true);
+
+  const togglePasswordVisibility = () => {
+    setHiddenPassword((prev) => !prev);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setHiddenConfirmPassword((prev) => !prev);
+  };
 
   return (
     <div style={formParentStyle}>
       <div style={formStyle}>
-        <div style={inputParentStyle}>
-            <i class="fa fa-envelope-o" aria-hidden="true" style={iconStyle}></i>
-            <input type="text" placeholder="Please Enter Your Email" style={inputStyle} />
-        </div>
+        <SignUpInputField
+          type="text"
+          placeholder="Please Enter Your Email"
+          icon="fa fa-envelope-o"
+          style={inputStyle}
+        />
         <div style={inputParentStyle2}>
-          <div style={inputParentStyle}>
-            <i class="fa fa-user" aria-hidden="true" style={iconStyle1}></i>
-            <input type="text" placeholder="First Name" style={inputStyle2} />
-          </div>
-          <div style={inputParentStyle}>
+           <div style={inputParentStyle}>
+             <i class="fa fa-user" aria-hidden="true" style={iconStyle1}></i>
+             <input type="text" placeholder="First Name" style={inputStyle2} />
+           </div>
+           <div style={inputParentStyle}>
 
-            <i class="fa fa-user" aria-hidden="true" style={iconStyle1}></i>
-            <input type="text" placeholder="Last Name" style={inputStyle1} />
-          </div>
-        </div>
-        <div style={inputParentStyle}>
-                { hiddenPassword ? 
-                    <i class="fa fa-eye-slash" aria-hidden="true" style={iconStyle} onClick={()=>setHiddenPassword(false)}></i> 
-                    : 
-                    <i class="fa fa-eye" aria-hidden="true" style={iconStyle} onClick={()=>setHiddenPassword(true)}></i>
-                }
-            <input type="password" placeholder="Password" style={inputStyle} />
-        </div>
-        <div style={inputParentStyle}>
-                { confirmHiddenPassword ? 
-                    <i class="fa fa-eye-slash" aria-hidden="true" style={iconStyle} onClick={()=>setConfirmHiddenPassword(false)}></i> 
-                    : 
-                    <i class="fa fa-eye" aria-hidden="true" style={iconStyle} onClick={()=>setConfirmHiddenPassword(true)}></i>
-                }
-            <input type="password" placeholder="Confirm Password" style={inputStyle} />
+             <i class="fa fa-user" aria-hidden="true" style={iconStyle1}></i>
+             <input type="text" placeholder="Last Name" style={inputStyle1} />
+           </div>
+         </div>
+        <SignUpInputField
+          type="password"
+          placeholder="Password"
+          hidden={hiddenPassword}
+          onToggle={togglePasswordVisibility}
+          style={inputStyle}
+        />
+        <SignUpInputField
+          type="password"
+          placeholder="Confirm Password"
+          hidden={hiddenConfirmPassword}
+          onToggle={toggleConfirmPasswordVisibility}
+          style={inputStyle}
+        />
+        <div>
+          <input type="checkbox" style={checkBoxStyle} />
+          <label>I accept the Terms of Service & Privacy Policy</label>
         </div>
         <div>
-            <input style={checkBoxStyle} type="checkbox" />
-            <label>
-                I accept the Terms of Service & Privacy Policy
-            </label>
-        </div>
-        <div>
-          <button style={loginButtonStyle}> SignUp</button>
+          <button style={loginButtonStyle}>SignUp</button>
         </div>
       </div>
     </div>
@@ -69,14 +76,12 @@ const iconStyle = {
   left: "10px", 
   top: "50%",
   transform: "translateY(-50%)",
-  fontSize:"22px",
+  fontSize:"22px"
 }
 
 const inputStyle = {
-  width: "400px",
-  height: "40px",
   borderRadius: "4px",
-  border: "1px solid #ccc",
+  border: "none",
   padding: "8px",
   textAlign:"center"
 };
@@ -86,14 +91,6 @@ const inputParentStyle = {
   position:"relative",
   display: "inline-block"
 };
-
-const iconStyle1 = {
-  position:"absolute",
-  left: "30px", 
-  top: "50%",
-  transform: "translateY(-50%)",
-  fontSize:"22px"
-}
 
 const inputStyle1 = {
   width: "200px",
@@ -105,12 +102,19 @@ const inputStyle1 = {
   textAlign:"center",
 };
 
+const iconStyle1 = {
+  position:"absolute",
+  left: "30px", 
+  top: "50%",
+  transform: "translateY(-50%)",
+  fontSize:"22px"
+}
+
 const inputParentStyle2 = {
   display: "flex",
   justifyContent: "space-evenly",
   alignItems: "center",
 }
-
 
 const inputStyle2 = {
   width: "156px",
@@ -123,7 +127,7 @@ const inputStyle2 = {
 };
 
 const checkBoxStyle = {
-  marginRight: "10px",
+  margin: "10px",
 };
 
 const loginButtonStyle = {
@@ -138,4 +142,3 @@ const loginButtonStyle = {
 };
 
 export default SignUpForm;
-

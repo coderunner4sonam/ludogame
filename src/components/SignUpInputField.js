@@ -1,30 +1,19 @@
+
 import React from "react";
 
-const InputField = ({ type, placeholder, icon, hidden, onToggle, style }) => {
+const SignUpInputField = ({ type, placeholder, icon, hidden, onToggle, style }) => {
 
   return (
     <div style={{ ...inputParentStyle, ...style }}>
       {icon && <i className={icon} style={iconStyle}></i>}
       {hidden ? (
-        <i
-          className="fa fa-eye-slash"
-          aria-hidden="true"
-          style={eyeIconStyle}
-          onClick={onToggle}
-        ></i>
+        <i className="fa fa-eye-slash" aria-hidden="true" style={eyeIconStyle} onClick={onToggle}></i>
       ) : (
-        <i
-          className="fa fa-eye"
-          aria-hidden="true"
-          style={eyeIconStyle}
-          onClick={onToggle}
-        ></i>
+        <i className="fa fa-eye" aria-hidden="true" style={eyeIconStyle} onClick={onToggle}></i>
       )}
-      <input
-        type={type}
-        placeholder={placeholder}
+      <input type={type} placeholder={placeholder}
         style={{
-            width: "400px", // Make the input width scalable
+            width: "400px", 
             height: "40px",
             borderRadius: "4px",
             border: "1px solid #ccc",
@@ -58,5 +47,4 @@ const eyeIconStyle = {
   cursor: "pointer",
 };
 
-
-export default InputField;
+export default SignUpInputField;

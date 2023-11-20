@@ -2,51 +2,35 @@ import React, { useState } from "react";
 import facebook from "../assets/facebook.png";
 import google from "../assets/google.png";
 import twitter from "../assets/twitter.png";
+import InputField from "../components/InputFeild";
 
 const LoginForm = () => {
-  const [hide, setHide] = useState(true);
-  
+  const [hiddenPassword, setHiddenPassword] = useState(true);
+
+  const togglePasswordVisibility = () => {
+    setHiddenPassword((prev) => !prev);
+  };
+
   return (
     <div>
       <div>
         <div style={formParentStyle}>
           <div style={formStyle}>
-            <div style={inputParentStyle}>
-              <i
-                class="fa fa-envelope-o"
-                aria-hidden="true"
-                style={iconStyle}
-              ></i>
-              <input
-                type="text"
-                placeholder="Please Enter Your Email"
-                style={inputStyle}
-              />
-            </div>
-            <div style={inputParentStyle}>
-              {hide ? (
-                <i
-                  class="fa fa-eye-slash"
-                  aria-hidden="true"
-                  style={iconStyle}
-                  onClick={() => setHide(false)}
-                ></i>
-              ) : (
-                <i
-                  class="fa fa-eye"
-                  aria-hidden="true"
-                  style={iconStyle}
-                  onClick={() => setHide(true)}
-                ></i>
-              )}
-              <input
-                type="password"
-                placeholder="Password"
-                style={inputStyle}
-              />
-            </div>
+            <InputField
+              type="text"
+              placeholder="Please Enter Your Email"
+              icon="fa fa-envelope-o"
+              style={inputStyle}
+            />
+            <InputField
+              type="password"
+              placeholder="Password"
+              hidden={hiddenPassword}
+              onToggle={togglePasswordVisibility}
+              style={inputStyle}
+            />
             <div>
-              <input style={checkBoxStyle} type="checkbox" />
+              <input type="checkbox" style={checkBoxStyle} />
               <label>Remember me?</label>
             </div>
             <div>
@@ -95,10 +79,8 @@ const iconStyle = {
 };
 
 const inputStyle = {
-  width: "400px",
-  height: "40px",
   borderRadius: "4px",
-  border: "1px solid #ccc",
+  border: "none",
   padding: "8px",
   margin: "8px 0",
   textAlign: "center",
