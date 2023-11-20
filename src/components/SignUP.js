@@ -8,7 +8,6 @@ const LoginSignUpStyle = {
   flexDirection: "column",
 }
 
-
 const LoginSignup = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
@@ -22,8 +21,6 @@ const LoginSignup = () => {
     username: "",
     password: "",
   })
-
-//   const [user, setUser] = useState(null);
 
   const handleLogin = () => {
     setShowLogin(!showLogin);
